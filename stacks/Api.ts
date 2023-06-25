@@ -6,6 +6,7 @@ export function Api({ stack }: StackContext) {
     defaults: {
       function: {
         bind: [use(Database)],
+        runtime: "nodejs18.x",
       },
     },
     routes: {
