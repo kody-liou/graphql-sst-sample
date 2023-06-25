@@ -4,16 +4,18 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "sst dev",
+    "dev": "npm run dev:env sst dev",
     "build": "sst build",
     "deploy": "sst deploy",
-    "remove": "sst remove",
+    "remove": "npm run dev:env sst remove",
     "console": "sst console",
     "typecheck": "tsc --noEmit",
+    "dev:env": "env-cmd -f .env.local --",
     "gen": "hygen"
   },
   "devDependencies": {
     "sst": "^2.16.3",
+    "env-cmd": "10.1.0",
     "aws-cdk-lib": "2.84.0",
     "constructs": "10.1.156",
     "typescript": "^5.1.3",
