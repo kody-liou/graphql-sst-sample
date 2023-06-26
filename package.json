@@ -27,5 +27,8 @@
   ],
   "overrides": {
     "graphql": "16.5.0"
+  },
+  "engines": {
+    "node": "18"
   }
 }
