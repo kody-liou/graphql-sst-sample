@@ -3,9 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "sst bind vite",
+    "dev": "npm run env:local sst bind vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "env:local": "env-cmd -f ../../.env.local --"
   },
   "dependencies": {
     "react": "^18.0.0",
