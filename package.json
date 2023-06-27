@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "npm run dev:env sst dev",
+    "dev:web": "cd packages/web && npm run dev",
     "build": "sst build",
     "deploy": "sst deploy",
     "remove": "npm run dev:env sst remove",
