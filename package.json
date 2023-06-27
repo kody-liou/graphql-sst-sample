@@ -4,14 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "npm run dev:env sst dev",
+    "dev": "sst dev",
     "dev:web": "cd packages/web && npm run dev",
     "build": "sst build",
     "deploy": "sst deploy",
-    "remove": "npm run dev:env sst remove",
+    "remove": "sst remove",
     "console": "sst console",
-    "typecheck": "tsc --noEmit",
-    "dev:env": "env-cmd -f .env.local --"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "sst": "2.16.3",
