@@ -7,7 +7,6 @@ export default {
   config(_input) {
     return {
       name: "graphql-sst-sample",
-      region: "us-east-1",
     };
   },
   stacks(app) {
