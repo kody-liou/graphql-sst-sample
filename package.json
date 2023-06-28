@@ -7,6 +7,7 @@
     "dev": "npm run env:local sst dev",
     "dev:web": "cd packages/web && npm run dev",
     "build": "sst build",
+    "build:web": "cd packages/web && npm run build",
     "deploy": "sst deploy",
     "remove": "npm run env:local sst remove",
     "console": "sst console",

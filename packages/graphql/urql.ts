@@ -1,13 +1,11 @@
 import {
   useQuery,
   useClient,
-  createClient,
   createRequest,
   RequestPolicy,
   OperationResult,
   UseMutationState,
   OperationContext,
-  defaultExchanges,
   UseMutationResponse,
 } from "urql";
 
