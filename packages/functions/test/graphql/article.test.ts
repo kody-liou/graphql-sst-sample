@@ -1,7 +1,7 @@
 import { Api } from "sst/node/api";
 import { expect, it } from "vitest";
-import { createClient } from "@graphql-sst-sample/graphql/genql";
-import { Article } from "@graphql-sst-sample/core/article";
+import { createClient } from "@/graphql/genql";
+import { Article } from "@/core/article";
 
 it("create an article", async () => {
   const client = createClient({

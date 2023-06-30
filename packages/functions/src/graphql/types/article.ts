@@ -1,4 +1,4 @@
-import { Article } from "@graphql-sst-sample/core/article";
+import { Article } from "@/core/article";
 import { builder } from "../builder";
 
 const ArticleType = builder
