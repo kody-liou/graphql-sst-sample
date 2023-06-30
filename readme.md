@@ -1,21 +1,24 @@
 # Prerequest
 
 1. Install nvm:
-https://github.com/nvm-sh/nvm
 
-2. Install node 18 by:
+Follow the instructions at https://github.com/nvm-sh/nvm to install nvm.
+
+2. Install Node.js 18:
+Run the following command to install Node.js 18 using nvm:
 ```bash
 nvm install 18
 ```
 
-3. Install yarn by:
+3. Install Yarn:
+    Run the following command to install Yarn globally:
 ```bash
 npm i -g yarn
 ```
 
 4. Create an AWS account
 
-5. Create a .env.local file at project's root folder like this:
+5. Create a .env.local file in the project's root folder with the following content:
 ```env
 AWS_ACCESS_KEY_ID=your access key id
 AWS_SECRET_ACCESS_KEY=your secret access key
@@ -24,14 +27,14 @@ AWS_REGION=ap-northeast-1
 NODE_ENV=development
 ```
 
-# Start
+# Getting Started
 
-1. Open JavaScript Debug Terminal and enter:
+1. Open the JavaScript Debug Terminal and execute the following command:
 ```bash
 yarn dev
 ```
 
-2. Open another terminal and enter:
+2. Open another terminal and execute the following command:
 ```bash
 yarn dev:web
 ```
