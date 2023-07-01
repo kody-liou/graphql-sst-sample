@@ -15,6 +15,14 @@ const ArticleType = builder
     }),
   });
 
+
+const CommentType = builder.objectRef<Article.CommentEntityType>("Comment").implement({
+  fields: (t) => ({
+    id: t.exposeID("commentID"),
+    ext: t.exposeString("text"),
+  }),
+});
+
 builder.queryFields((t) => ({
   article: t.field({
     type: ArticleType,
@@ -54,10 +62,3 @@ builder.mutationFields((t) => ({
   }),
 }));
 
-
-const CommentType = builder.objectRef<Article.CommentEntityType>("Comment").implement({
-  fields: (t) => ({
-    id: t.exposeID("commentID"),
-    text: t.exposeString("text"),
-  }),
-});
