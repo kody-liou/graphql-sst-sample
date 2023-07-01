@@ -19,7 +19,7 @@ const ArticleType = builder
 const CommentType = builder.objectRef<Article.CommentEntityType>("Comment").implement({
   fields: (t) => ({
     id: t.exposeID("commentID"),
-    ext: t.exposeString("text"),
+    text: t.exposeString("text"),
   }),
 });
 
