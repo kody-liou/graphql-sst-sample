@@ -72,14 +72,14 @@ const CommentEntity = new Entity(
       service: "scratch",
     },
     attributes: {
-      commentID: {
-        type: "string",
-        required: true,
-      },
       articleID: {
         type: "string",
         required: true,
         readOnly: true,
+      },
+      commentID: {
+        type: "string",
+        required: true,
       },
       text: {
         type: "string",
@@ -94,7 +94,7 @@ const CommentEntity = new Entity(
         },
         sk: {
           field: "sk",
-          composite: ["articleID"],
+          composite: ["articleID","commentID"],
         },
       },
     },
