@@ -18,9 +18,8 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseClassName = styles[variant];
-
   return (
-    <button type={type} className={`${baseClassName} ${className}`}>
+    <button type={type} className={`${baseClassName} ${className}`} {...props}>
       {loading && <CgSpinner className={styles.spinner} />}
       {children}
     </button>
