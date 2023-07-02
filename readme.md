@@ -41,3 +41,9 @@ yarn dev:web
 
 # About Packages
 
+# React tips
+
+Pass all the props from a parent component to a child component:
+https://medium.com/coding-at-dawn/how-to-pass-all-props-to-a-child-component-in-react-bded9e38bb62
+
+
