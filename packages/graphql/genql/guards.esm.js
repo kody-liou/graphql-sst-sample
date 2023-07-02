@@ -15,6 +15,14 @@ export var isComment = function(obj) {
 
 
 
+var CommentRemoved_possibleTypes = ['CommentRemoved']
+export var isCommentRemoved = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isCommentRemoved"')
+  return CommentRemoved_possibleTypes.includes(obj.__typename)
+}
+
+
+
 var Mutation_possibleTypes = ['Mutation']
 export var isMutation = function(obj) {
   if (!obj || !obj.__typename) throw new Error('__typename is missing in "isMutation"')

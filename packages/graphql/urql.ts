@@ -45,17 +45,19 @@ const initialState = {
 };
 
 export function useTypedMutation<
-  Variables extends Record<string, any>,
+  Variables extends Record<string, unknown>,
   Mutation extends MutationRequest,
   Data extends MutationResult<Mutation>
 >(
   builder: (vars: Variables) => Mutation,
   opts?: Partial<OperationContext>
 ): UseMutationResponse<Data, Variables> {
-  const client = useClient();
+  const client = useClient(); // Get client from context
   const isMounted = useRef(true);
   const [state, setState] =
     useState<UseMutationState<Data, Variables>>(initialState);
+  // useCallback is a React Hook that lets you cache a function definition between re-renders.
+  // If not use useCallback, the component will create new function after every re-render, will impact performance
   const executeMutation = useCallback(
     (
       vars?: Variables,
@@ -88,6 +90,7 @@ export function useTypedMutation<
     [state, setState]
   );
 
+  // https://react.dev/reference/react/useEffect
   useEffect(() => {
     isMounted.current = true;
     return () => {

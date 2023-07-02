@@ -10,10 +10,14 @@ type Comment {
   text: String!
 }
 
+type CommentRemoved {
+  success: Boolean!
+}
+
 type Mutation {
   addComment(articleID: String!, text: String!): Comment!
   createArticle(title: String!, url: String!): Article!
-  removeComment(articleID: String!, commentID: String!): Comment!
+  removeComment(articleID: String!, commentID: String!): CommentRemoved!
 }
 
 type Query {

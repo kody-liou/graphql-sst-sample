@@ -50,7 +50,7 @@ export default function Article() {
         commentID: opts.commentID,
       },
       {
-        id: true,
+        success: true,
       },
     ],
   }));

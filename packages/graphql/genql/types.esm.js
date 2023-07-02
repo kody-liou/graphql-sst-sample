@@ -2,7 +2,7 @@ export default {
     "scalars": [
         1,
         2,
-        6
+        5
     ],
     "types": {
         "Article": {
@@ -35,6 +35,15 @@ export default {
                 2
             ]
         },
+        "CommentRemoved": {
+            "success": [
+                5
+            ],
+            "__typename": [
+                2
+            ]
+        },
+        "Boolean": {},
         "Mutation": {
             "addComment": [
                 3,
@@ -63,7 +72,7 @@ export default {
                 }
             ],
             "removeComment": [
-                3,
+                4,
                 {
                     "articleID": [
                         2,
@@ -95,7 +104,6 @@ export default {
             "__typename": [
                 2
             ]
-        },
-        "Boolean": {}
+        }
     }
 }
