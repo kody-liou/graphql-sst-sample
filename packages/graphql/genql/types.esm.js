@@ -62,6 +62,19 @@ export default {
                     ]
                 }
             ],
+            "removeComment": [
+                3,
+                {
+                    "articleID": [
+                        2,
+                        "String!"
+                    ],
+                    "commentID": [
+                        2,
+                        "String!"
+                    ]
+                }
+            ],
             "__typename": [
                 2
             ]

@@ -60,5 +60,13 @@ builder.mutationFields((t) => ({
     },
     resolve: (_, args) => Article.addComment(args.articleID, args.text),
   }),
+  removeComment:  t.field({
+    type: CommentType,
+    args: {
+      articleID: t.arg.string({ required: true }),
+      commentID: t.arg.string({ required: true }),
+    },
+    resolve: (_, args) => Article.removeComment(args.articleID, args.commentID),
+  }),
 }));
 

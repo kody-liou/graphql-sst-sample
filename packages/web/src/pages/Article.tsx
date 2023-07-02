@@ -31,7 +31,7 @@ export default function Article() {
     context,
   });
 
-  const [result, addComment] = useTypedMutation((opts: CommentForm) => ({
+  const [addCommentResult, addComment] = useTypedMutation((opts: CreateCommentForm) => ({
     addComment: [
       {
         text: opts.text,
@@ -43,9 +43,26 @@ export default function Article() {
     ],
   }));
 
-  interface CommentForm {
+  const [removeCommentResult, removeComment] = useTypedMutation((opts: RemoveCommentForm) => ({
+    removeComment: [
+      {
+        articleID: opts.articleID,
+        commentID: opts.commentID,
+      },
+      {
+        id: true,
+      },
+    ],
+  }));
+
+  interface CreateCommentForm {
     text: string;
     articleID: string;
+  }
+
+  interface RemoveCommentForm {
+    articleID: string;
+    commentID: string;
   }
 
   return (
@@ -65,6 +82,17 @@ export default function Article() {
             {article.data.article.comments?.map((comment) => (
               <li key={comment.id} className={styles.comment}>
                 {comment.text}
+                <Button
+                  variant="secondary"
+                  className={styles.button}
+                  loading={removeCommentResult.fetching || article.stale}
+                  onClick={async ()=> {
+                    if(!article.data) return;
+                    await removeComment({articleID: article.data.article.id, commentID: comment.id});
+                  }}
+                >
+                  x
+                </Button>
               </li>
             ))}
           </ol>
@@ -90,7 +118,7 @@ export default function Article() {
               type="submit"
               variant="secondary"
               className={styles.button}
-              loading={result.fetching || article.stale}
+              loading={addCommentResult.fetching || article.stale}
             >
               Add Comment
             </Button>
