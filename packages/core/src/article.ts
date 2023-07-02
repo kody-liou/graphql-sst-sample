@@ -114,7 +114,7 @@ export async function addComment(articleID: string, text: string) {
 }
 
 
-export async function removeComment(articleID: string, commentID: string) {
+export async function removeComment(articleID: string, commentID: string): Promise<{}> {
   const result = await CommentEntity.remove({
     articleID,
     commentID,
