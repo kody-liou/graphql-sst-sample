@@ -70,10 +70,6 @@ export function useTypedMutation<
       const buildArgs = vars || ({} as Variables);
       const built = builder(buildArgs);
       const { query, variables } = generateMutationOp(built);
-      const a = client.executeMutation<Data, Variables>(
-        createRequest(query, variables as Variables),
-        { ...opts, ...context }
-      );
       return pipe(
         // urql follow "callbag" standard (The streaming standard), and wonka can transform the return into promise
         client.executeMutation<Data, Variables>(
