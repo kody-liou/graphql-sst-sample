@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useTypedQuery } from "@graphql-sst-sample/graphql/urql";
 import Empty from "../components/Empty";
@@ -7,11 +6,6 @@ import Loading from "../components/Loading";
 import styles from "./Home.module.css";
 
 export default function Home() {
-  // Handle empty document cache
-  // https://formidable.com/open-source/urql/docs/basics/document-caching/#adding-typenames
-  const context = useMemo(() => ({ 
-    additionalTypenames: ["Article","Comments"],
-  }), []);
   const [articles] = useTypedQuery({
     query: {
       articles: {
@@ -23,7 +17,11 @@ export default function Home() {
         },
       },
     },
-    context,
+    context:{ 
+      // Handle empty document cache
+      // https://formidable.com/open-source/urql/docs/basics/document-caching/#adding-typenames
+      additionalTypenames: ["Article","Comments"],
+    },
   });
 
   return (
