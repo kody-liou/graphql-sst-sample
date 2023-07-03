@@ -45,7 +45,7 @@ const initialState = {
 };
 
 export function useTypedMutation<
-  Variables extends Record<string, unknown>,
+  Variables extends Record<string, any>,
   Mutation extends MutationRequest,
   Data extends MutationResult<Mutation>
 >(

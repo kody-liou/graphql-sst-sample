@@ -31,7 +31,7 @@ export default function Article() {
     context,
   });
 
-  const [addCommentResult, addComment] = useTypedMutation((opts: CreateCommentForm) => ({
+  const [addCommentResult, addComment] = useTypedMutation((opts:CreateCommentForm) => ({
     addComment: [
       {
         text: opts.text,
