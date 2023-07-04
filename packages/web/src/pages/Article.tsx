@@ -32,6 +32,8 @@ export default function Article() {
     context,
   });
 
+  // Unlike the useQuery hook, the useMutation hook doesn't execute automatically.
+  // The mutation only triggered by addComment
   const [addCommentResult, addComment] = useTypedMutation((opts:CreateCommentForm) => ({
     addComment: [
       {
