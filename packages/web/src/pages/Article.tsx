@@ -13,6 +13,7 @@ export default function Article() {
   // https://formidable.com/open-source/urql/docs/basics/document-caching/#adding-typenames
   const context = useMemo(() => ({ additionalTypenames: ["Comment"] }), []);
 
+  // useTypedQuery will execute query every re-render
   const [article] = useTypedQuery({
     query: {
       article: [
