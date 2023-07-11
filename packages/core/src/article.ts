@@ -113,6 +113,18 @@ export async function addComment(articleID: string, text: string) {
   return result.data;
 }
 
+export async function updateComment(articleID: string, commentID: string, text: string) {
+ await CommentEntity.update({
+    articleID,
+    commentID,
+  }).set({text}).go();
+  return {
+    articleID,
+    commentID,
+    text,
+  };
+}
+
 
 export async function removeComment(articleID: string, commentID: string): Promise<{}> {
   const result = await CommentEntity.remove({

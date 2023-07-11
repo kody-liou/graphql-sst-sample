@@ -18,6 +18,7 @@ type Mutation {
   addComment(articleID: String!, text: String!): Comment!
   createArticle(title: String!, url: String!): Article!
   removeComment(articleID: String!, commentID: String!): CommentRemoved!
+  updateComment(articleID: String!, commentID: String!, text: String!): Comment!
 }
 
 type Query {

@@ -29,6 +29,7 @@ export interface Mutation {
     addComment: Comment
     createArticle: Article
     removeComment: CommentRemoved
+    updateComment: Comment
     __typename: 'Mutation'
 }
 
@@ -64,6 +65,7 @@ export interface MutationRequest{
     addComment?: [{articleID: Scalars['String'],text: Scalars['String']},CommentRequest]
     createArticle?: [{title: Scalars['String'],url: Scalars['String']},ArticleRequest]
     removeComment?: [{articleID: Scalars['String'],commentID: Scalars['String']},CommentRemovedRequest]
+    updateComment?: [{articleID: Scalars['String'],commentID: Scalars['String'],text: Scalars['String']},CommentRequest]
     __typename?: boolean | number
     __scalar?: boolean | number
 }
@@ -150,13 +152,15 @@ export interface CommentRemovedObservableChain{
 export interface MutationPromiseChain{
     addComment: ((args: {articleID: Scalars['String'],text: Scalars['String']}) => CommentPromiseChain & {get: <R extends CommentRequest>(request: R, defaultValue?: FieldsSelection<Comment, R>) => Promise<FieldsSelection<Comment, R>>}),
     createArticle: ((args: {title: Scalars['String'],url: Scalars['String']}) => ArticlePromiseChain & {get: <R extends ArticleRequest>(request: R, defaultValue?: FieldsSelection<Article, R>) => Promise<FieldsSelection<Article, R>>}),
-    removeComment: ((args: {articleID: Scalars['String'],commentID: Scalars['String']}) => CommentRemovedPromiseChain & {get: <R extends CommentRemovedRequest>(request: R, defaultValue?: FieldsSelection<CommentRemoved, R>) => Promise<FieldsSelection<CommentRemoved, R>>})
+    removeComment: ((args: {articleID: Scalars['String'],commentID: Scalars['String']}) => CommentRemovedPromiseChain & {get: <R extends CommentRemovedRequest>(request: R, defaultValue?: FieldsSelection<CommentRemoved, R>) => Promise<FieldsSelection<CommentRemoved, R>>}),
+    updateComment: ((args: {articleID: Scalars['String'],commentID: Scalars['String'],text: Scalars['String']}) => CommentPromiseChain & {get: <R extends CommentRequest>(request: R, defaultValue?: FieldsSelection<Comment, R>) => Promise<FieldsSelection<Comment, R>>})
 }
 
 export interface MutationObservableChain{
     addComment: ((args: {articleID: Scalars['String'],text: Scalars['String']}) => CommentObservableChain & {get: <R extends CommentRequest>(request: R, defaultValue?: FieldsSelection<Comment, R>) => Observable<FieldsSelection<Comment, R>>}),
     createArticle: ((args: {title: Scalars['String'],url: Scalars['String']}) => ArticleObservableChain & {get: <R extends ArticleRequest>(request: R, defaultValue?: FieldsSelection<Article, R>) => Observable<FieldsSelection<Article, R>>}),
-    removeComment: ((args: {articleID: Scalars['String'],commentID: Scalars['String']}) => CommentRemovedObservableChain & {get: <R extends CommentRemovedRequest>(request: R, defaultValue?: FieldsSelection<CommentRemoved, R>) => Observable<FieldsSelection<CommentRemoved, R>>})
+    removeComment: ((args: {articleID: Scalars['String'],commentID: Scalars['String']}) => CommentRemovedObservableChain & {get: <R extends CommentRemovedRequest>(request: R, defaultValue?: FieldsSelection<CommentRemoved, R>) => Observable<FieldsSelection<CommentRemoved, R>>}),
+    updateComment: ((args: {articleID: Scalars['String'],commentID: Scalars['String'],text: Scalars['String']}) => CommentObservableChain & {get: <R extends CommentRequest>(request: R, defaultValue?: FieldsSelection<Comment, R>) => Observable<FieldsSelection<Comment, R>>})
 }
 
 export interface QueryPromiseChain{

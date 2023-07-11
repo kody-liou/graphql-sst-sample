@@ -84,6 +84,23 @@ export default {
                     ]
                 }
             ],
+            "updateComment": [
+                3,
+                {
+                    "articleID": [
+                        2,
+                        "String!"
+                    ],
+                    "commentID": [
+                        2,
+                        "String!"
+                    ],
+                    "text": [
+                        2,
+                        "String!"
+                    ]
+                }
+            ],
             "__typename": [
                 2
             ]
