@@ -46,4 +46,6 @@ yarn dev:web
 Pass all the props from a parent component to a child component:
 https://medium.com/coding-at-dawn/how-to-pass-all-props-to-a-child-component-in-react-bded9e38bb62
 
+# Graphql tutorial
 
+https://stackoverflow.com/questions/61526823/what-is-on-doing-in-this-graphql
