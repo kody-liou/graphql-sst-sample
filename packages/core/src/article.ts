@@ -1,6 +1,6 @@
 import { ulid } from "ulid";
 import { Entity, EntityItem } from "electrodb";
-import { Dynamo } from "./dynamo";
+import { Dynamo } from "../../utils/src/dynamo";
 
 export * as Article from "./article";
 
