@@ -1,4 +1,4 @@
-import { Article } from "@graphql-sst-sample/core/article";
+import { Article } from "../../../../core/src/article";
 import { builder } from "../builder";
 
 const ArticleType = builder
@@ -23,7 +23,7 @@ const CommentType = builder.objectRef<Article.CommentEntityType>("Comment").impl
   }),
 });
 
-const CommentRemovedType = builder.objectRef<{success:boolean}>("CommentRemoved").implement({
+const CommentRemovedType = builder.objectRef<{ success: boolean }>("CommentRemoved").implement({
   fields: (t) => ({
     success: t.exposeBoolean('success')
   }),
@@ -66,7 +66,7 @@ builder.mutationFields((t) => ({
     },
     resolve: (_, args) => Article.addComment(args.articleID, args.text),
   }),
-  updateComment:  t.field({
+  updateComment: t.field({
     type: CommentType,
     args: {
       articleID: t.arg.string({ required: true }),
@@ -75,15 +75,15 @@ builder.mutationFields((t) => ({
     },
     resolve: (_, args) => Article.updateComment(args.articleID, args.commentID, args.text),
   }),
-  removeComment:  t.field({
+  removeComment: t.field({
     type: CommentRemovedType,
     args: {
       articleID: t.arg.string({ required: true }),
       commentID: t.arg.string({ required: true }),
     },
     resolve: async (_, args) => {
-     await Article.removeComment(args.articleID, args.commentID);
-     return {success:true}
+      await Article.removeComment(args.articleID, args.commentID);
+      return { success: true }
     },
   }),
 }));
