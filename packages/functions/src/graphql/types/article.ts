@@ -1,4 +1,4 @@
-import * as Article from "../../../../core/src/article";
+import { Article } from "../../../../core/src/article";
 import { builder } from "../builder";
 
 const ArticleType = builder
