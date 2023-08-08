@@ -39,7 +39,7 @@ const ArticleEntity = new Entity(
       },
     },
   },
-  Dynamo.Configuration
+  Dynamo.Configuration,
 );
 
 export type ArticleEntityType = EntityItem<typeof ArticleEntity>;
@@ -94,12 +94,12 @@ const CommentEntity = new Entity(
         },
         sk: {
           field: "sk",
-          composite: ["articleID","commentID"],
+          composite: ["articleID", "commentID"],
         },
       },
     },
   },
-  Dynamo.Configuration
+  Dynamo.Configuration,
 );
 
 export type CommentEntityType = EntityItem<typeof CommentEntity>;
@@ -113,11 +113,17 @@ export async function addComment(articleID: string, text: string) {
   return result.data;
 }
 
-export async function updateComment(articleID: string, commentID: string, text: string) {
- await CommentEntity.update({
+export async function updateComment(
+  articleID: string,
+  commentID: string,
+  text: string,
+) {
+  await CommentEntity.update({
     articleID,
     commentID,
-  }).set({text}).go();
+  })
+    .set({ text })
+    .go();
   return {
     articleID,
     commentID,
@@ -125,13 +131,15 @@ export async function updateComment(articleID: string, commentID: string, text: 
   };
 }
 
-
-export async function removeComment(articleID: string, commentID: string): Promise<{}> {
-  const result = await CommentEntity.remove({
+export async function removeComment(
+  articleID: string,
+  commentID: string,
+) {
+  await CommentEntity.remove({
     articleID,
     commentID,
   }).go();
-  return result.data;
+  return { success: true };
 }
 
 export async function comments(articleID: string) {
