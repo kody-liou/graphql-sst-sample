@@ -9,9 +9,13 @@ import styles from "./Home.module.css";
 export default function Home() {
   // Handle empty document cache
   // https://formidable.com/open-source/urql/docs/basics/document-caching/#adding-typenames
+  // If not use useMemo, will get error:
+  // react-dom.development.js:16317 Uncaught Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
+  // We can also just using a global variable to aviod this error.
   const context = useMemo(() => ({ 
     additionalTypenames: ["Article","Comments"],
   }), []);
+  
   const [articles] = useTypedQuery({
     query: {
       articles: {
@@ -23,7 +27,9 @@ export default function Home() {
         },
       },
     },
+    // pause: true, // Can pause the query
     context,
+    // requestPolicy: 'cache-only',
   });
 
   return (

@@ -14,6 +14,12 @@ import "./globals.css";
 const urql = createClient({
   url: import.meta.env.VITE_GRAPHQL_URL,
   exchanges: [cacheExchange, fetchExchange],
+  // fetchOptions: () => {
+  //   const token = getToken();
+  //   return {
+  //     headers: { authorization: token ? `Bearer ${token}` : '' },
+  //   };
+  // },
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

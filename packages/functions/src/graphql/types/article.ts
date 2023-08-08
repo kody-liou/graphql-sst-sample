@@ -23,6 +23,12 @@ const CommentType = builder.objectRef<Article.CommentEntityType>("Comment").impl
   }),
 });
 
+const CommentRemovedType = builder.objectRef<{success:boolean}>("CommentRemoved").implement({
+  fields: (t) => ({
+    success: t.exposeBoolean('success')
+  }),
+});
+
 builder.queryFields((t) => ({
   article: t.field({
     type: ArticleType,
@@ -59,6 +65,26 @@ builder.mutationFields((t) => ({
       text: t.arg.string({ required: true }),
     },
     resolve: (_, args) => Article.addComment(args.articleID, args.text),
+  }),
+  updateComment:  t.field({
+    type: CommentType,
+    args: {
+      articleID: t.arg.string({ required: true }),
+      commentID: t.arg.string({ required: true }),
+      text: t.arg.string({ required: true }),
+    },
+    resolve: (_, args) => Article.updateComment(args.articleID, args.commentID, args.text),
+  }),
+  removeComment:  t.field({
+    type: CommentRemovedType,
+    args: {
+      articleID: t.arg.string({ required: true }),
+      commentID: t.arg.string({ required: true }),
+    },
+    resolve: async (_, args) => {
+     await Article.removeComment(args.articleID, args.commentID);
+     return {success:true}
+    },
   }),
 }));
 

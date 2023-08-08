@@ -52,10 +52,15 @@ export function useTypedMutation<
   builder: (vars: Variables) => Mutation,
   opts?: Partial<OperationContext>
 ): UseMutationResponse<Data, Variables> {
-  const client = useClient();
-  const isMounted = useRef(true);
+  const client = useClient(); // Get client from context
+  // useRef is a React Hook that lets you reference a value that’s not needed for rendering.
+  // Change isMounted.current will not trigger re-render
+  // The isMounted.current will persist during every re-render
+  const isMounted = useRef(true); 
   const [state, setState] =
     useState<UseMutationState<Data, Variables>>(initialState);
+  // useCallback is a React Hook that lets you cache a function definition between re-renders.
+  // If not use useCallback, the component will create new function after every re-render, will impact performance
   const executeMutation = useCallback(
     (
       vars?: Variables,
@@ -66,6 +71,7 @@ export function useTypedMutation<
       const built = builder(buildArgs);
       const { query, variables } = generateMutationOp(built);
       return pipe(
+        // urql follow "callbag" standard (The streaming standard), and wonka can transform the return into promise
         client.executeMutation<Data, Variables>(
           createRequest(query, variables as Variables),
           { ...opts, ...context }
@@ -88,6 +94,7 @@ export function useTypedMutation<
     [state, setState]
   );
 
+  // https://react.dev/reference/react/useEffect
   useEffect(() => {
     isMounted.current = true;
     return () => {
